@@ -52,19 +52,48 @@ function SingleLineGridList() {
     </div>
   );
 }
+function TitlebarGridList() {
+  
+
+  return (
+    <div className="root2">
+      <GridList cellHeight={350} className="gridList2" cols={4}>
+        {MovieData.map((tile) => (
+          <GridListTile key={tile.id}>
+            <img src={tile.poster_url} alt={tile.title} />
+            <GridListTileBar
+              title={tile.title}
+              subtitle={<span>Release Date: {tile.release_date.substring(0,10)}</span>}
+            
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  );
+}
 
 export default class Home extends Component {
     render() {
         return (
-            <div>
+            <>
+            <div className="homeDiv">
                 <Header/>
-                <div className="upComingMoviesHeader">
-                    <span >Upcoming Movies</span>
-                </div>
-                <div>
-                    <SingleLineGridList/>
-                </div>
             </div>
+            
+            <div className="upComingMoviesHeader">
+                <span >Upcoming Movies</span>
+            </div>
+            <div className="listDiv">
+                    <SingleLineGridList/>
+            </div>
+            <div className= "flex-container">
+                <div className="left"><TitlebarGridList/></div>
+                <div className='form-div'>
+                future form here!
+                </div>
+             </div>   
+            </>
         )
     }
 }
